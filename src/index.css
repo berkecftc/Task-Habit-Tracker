@@ -1,14 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-gray-50 text-slate-900 transition-colors duration-300;
+  html {
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  
-  /* Dark mode classes support */
-  .dark body {
-    @apply bg-slate-900 text-slate-50;
+
+  body {
+    @apply bg-amber-50 dark:bg-stone-950 text-stone-900 dark:text-stone-50;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* ─── Checkbox check animation ─────────────────────────────── */
+@keyframes checkmark-pop {
+  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+  55%  { transform: scale(1.2) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.check-animate {
+  animation: checkmark-pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ─── Custom scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar         { width: 5px; }
+::-webkit-scrollbar-track   { background: transparent; }
+::-webkit-scrollbar-thumb   { background: #d6d3d1; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #44403c; }
+
+/* ─── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

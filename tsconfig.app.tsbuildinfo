@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/layout/header.tsx","./src/components/layout/layout.tsx","./src/components/task/taskcard.tsx","./src/components/task/taskfilter.tsx","./src/components/task/taskform.tsx","./src/components/task/tasklist.tsx","./src/components/task/taskstats.tsx","./src/context/taskcontext.tsx","./src/hooks/usedarkmode.ts","./src/hooks/uselocalstorage.ts","./src/interfaces/index.ts","./src/pages/dashboard.tsx"],"version":"5.9.3"}

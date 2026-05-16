@@ -14,8 +14,7 @@ export const TaskForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basit Validasyon (Doğrulama)
+
     if (!title.trim()) {
       toast.error('Lütfen bir görev başlığı girin.');
       return;
@@ -30,61 +29,66 @@ export const TaskForm: React.FC = () => {
     });
 
     toast.success('Görev başarıyla eklendi!');
-    
-    // Formu temizle
+
     setTitle('');
     setDescription('');
     setPriority('medium');
     setCategory('work');
   };
 
+  const inputClass =
+    'w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 ' +
+    'bg-stone-50 dark:bg-stone-800/60 text-stone-900 dark:text-stone-100 ' +
+    'placeholder:text-stone-400 dark:placeholder:text-stone-500 ' +
+    'focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent ' +
+    'transition-all duration-200 text-sm font-medium';
+
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 mb-8 transition-colors duration-300"
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-2xl p-5 shadow-sm transition-colors duration-300"
     >
-      <div className="flex flex-col gap-4">
-        {/* Başlık Input'u */}
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Görev Başlığı *
-          </label>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Ne yapmak istiyorsun?"
-            className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-          />
-        </div>
+      <p className="text-[11px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">
+        Yeni Görev
+      </p>
 
-        {/* Açıklama Input'u */}
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-            Açıklama (İsteğe bağlı)
-          </label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Görev hakkında detaylar..."
-            rows={2}
-            className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
-          />
-        </div>
+      <div className="flex flex-col gap-3">
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          {/* Kategori Seçimi */}
-          <div className="flex-1">
-            <label htmlFor="category" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+        {/* Başlık */}
+        <input
+          id="title"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Ne yapmak istiyorsun?"
+          className={inputClass}
+        />
+
+        {/* Açıklama */}
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Görev hakkında detaylar... (isteğe bağlı)"
+          rows={2}
+          className={inputClass + ' resize-none'}
+        />
+
+        <div className="flex flex-col sm:flex-row gap-3">
+
+          {/* Kategori */}
+          <div className="flex-1 flex flex-col gap-1.5">
+            <label
+              htmlFor="category"
+              className="text-[11px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest"
+            >
               Kategori
             </label>
             <select
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+              className={inputClass + ' cursor-pointer'}
             >
               <option value="work">İş</option>
               <option value="personal">Kişisel</option>
@@ -94,32 +98,41 @@ export const TaskForm: React.FC = () => {
             </select>
           </div>
 
-          {/* Öncelik Seçimi */}
-          <div className="flex-1">
-            <label htmlFor="priority" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Öncelik Seviyesi
+          {/* Öncelik */}
+          <div className="flex-1 flex flex-col gap-1.5">
+            <label
+              htmlFor="priority"
+              className="text-[11px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest"
+            >
+              Öncelik
             </label>
             <select
               id="priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value as Priority)}
-              className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+              className={inputClass + ' cursor-pointer'}
             >
               <option value="low">Düşük</option>
               <option value="medium">Orta</option>
               <option value="high">Yüksek</option>
             </select>
           </div>
+
         </div>
 
-        {/* Gönder Butonu */}
+        {/* Gönder */}
         <button
           type="submit"
-          className="mt-2 w-full sm:w-auto self-end flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm shadow-primary-500/30"
+          className="self-end flex items-center gap-2 bg-amber-600 hover:bg-amber-500 active:bg-amber-700
+                     text-white px-6 py-3 rounded-xl font-semibold text-sm
+                     transition-all duration-200 shadow-sm shadow-amber-500/20
+                     hover:shadow-md hover:shadow-amber-500/25 hover:-translate-y-0.5 active:translate-y-0
+                     cursor-pointer"
         >
-          <FiPlus className="w-5 h-5" />
+          <FiPlus className="w-4 h-4" strokeWidth={2.5} />
           Görev Ekle
         </button>
+
       </div>
     </form>
   );
