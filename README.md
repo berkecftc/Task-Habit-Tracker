@@ -22,17 +22,9 @@ Designed with clean architecture principles and a beautiful SaaS-like user inter
 - **Icons & Notifications**: React Icons, React Hot Toast
 - **Utilities**: Lodash (Debounce), UUID
 
-## 📸 Screenshots
-
-*(Replace these links with your actual image links later)*
-
-| Dashboard (Light) | Dashboard (Dark) |
-| :---: | :---: |
-| ![Light Mode](https://via.placeholder.com/400x250/ffffff/000000?text=Light+Mode+Screenshot) | ![Dark Mode](https://via.placeholder.com/400x250/0f172a/ffffff?text=Dark+Mode+Screenshot) |
-
 ## 🚀 Live Demo
 
-Check out the live application here: **[Netlify Live URL Here](#)**
+Check out the live application here: **[https://taskhabittracer.netlify.app](https://taskhabittracer.netlify.app)**
 
 ## 💻 Installation & Local Development
 
